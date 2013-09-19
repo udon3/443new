@@ -174,7 +174,7 @@ SUKO443.Modules = function(){
 	.		paramname: selector/string/number/boolean/etc
 	.	e.g. functionName(param)
 	*/
-
+	//SOme new additional function
 
 	/*	contactFormSubmit:
 	.	Validates, shows errors, submits form and shows a message on success: 
