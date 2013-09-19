@@ -1,0 +1,26 @@
+// IE 6,7,8
+.lt-ie9{
+	//no multiple backgrounds for IE less than 9
+	body {
+		background-color: #142016;
+		background-image: url(assets/home_bg-large2.jpg);
+		background-repeat: no-repeat;
+		background-position: center top;
+	}
+}
+
+// IE 6,7
+.lt-ie8{
+	section ul {
+	  margin-left: 0.2em;
+	}
+	section ol {
+	  margin-left: 0.3em;
+	}
+}
+
+// IE 6
+// No longer supporting IE6
+.lt-ie7{
+	
+}

@@ -1,0 +1,217 @@
+//#responsivetest {position: absolute; z-index: 10000; top:0; left:0; height:20px; width: 100%; @include opacity(0.50);	}
+
+ul#simple-nav,
+a.sidetab,
+a.searchtab  {
+	display: none;
+}
+
+
+@media screen and (max-width: 980px) {	//#responsivetest {background:blue;}
+	a.skip {
+		left: 0;
+		z-index: 3;
+		@include opacity(0.75);	
+		@include border-radius(0 0 .5em 0);
+	}
+	#searchwrap form {
+		position: relative;
+		width: auto;
+		@include border-radius(.5em);
+		padding: .5em;
+		margin-top: .5em;
+		left: 0;
+	}
+	aside {
+		position:relative;
+		width:auto;
+		top:0;
+		left:0;
+		margin-top: .5em;
+	}
+	a.sidetab {
+		@include tab-style;
+  		@include rotate(90deg);
+		top: 40px;
+		right: -82px;
+	}
+	a.searchtab {
+		@include tab-style;
+  		@include rotate(90deg);
+		top: -20px;
+		right: -52px;
+	}
+	aside a.sidetab {
+		right: -65px;
+		top: auto;
+		bottom: 50px;
+	}
+	
+}
+@media screen and (max-width: 570px) {	//#responsivetest {background:green;}	
+	#wrap #centre {
+		width:95%;
+	}
+	
+	a.searchtab {
+		@include tab-style;
+  		@include rotate(-90deg);
+		top: 10px;
+		right: -30px;
+		z-index:100;
+	}
+	a.sidetab {
+		@include tab-style;
+  		@include rotate(-90deg);
+		top: 60px;
+		right: -60px;
+		z-index:100;
+	}
+	#searchwrap form {
+		position: relative;
+		@include border-radius(.5em);
+		padding: .5em;
+		margin-top: .5em;
+		left: 0;
+		width: 95%;
+	}
+	aside {
+		position:relative;
+		width:auto;
+		top:0;
+		left:0;
+		margin-top: .5em;
+	}
+}
+
+
+@media screen and (max-width: 480px) {  //#responsivetest {background:red;}	
+	
+	body.home.page {
+		background-color: $color-tertiary;
+		background-image: url(assets/home_bg-small.jpg);
+		background-repeat: no-repeat;
+		background-position: right top;
+		background-attachment:fixed;
+		@include background-size(cover);
+		#searchwrap form {
+			width: 80%;
+		}
+		nav {
+			ul#simple-nav {
+				display: none;
+			}
+			ul#mainnav {
+				display: block;
+				background: none;
+				li {
+					font-size: 7em;
+					padding-bottom: 0;
+				}
+			}
+		}
+		
+	}
+	body.page {
+		overflow-x:hidden;
+		background-image: none;
+		header {
+		
+			nav {
+				ul#simple-nav {
+					display: block;
+					position: relative;
+				}
+				ul#mainnav {
+					display: none;
+
+					z-index: 10;
+					background: $color-light;
+					left: 0;
+					right:0;
+					padding-right:0px;
+					margin: .7em 0;
+					li {
+						line-height:1;
+						font-size: 4em;
+						padding: 0 .1em;
+						margin: 0 .2em .2em;
+						overflow: hidden;
+					}
+					&.oncanvas {
+						display: block;
+					}
+				}
+			}
+			
+		}
+	}
+
+
+	h1 {
+	  @include h2-type; 
+	}
+
+	h2 {
+	  @include h3-type; 
+	}
+	#wrap section {
+		font-size: 1.6em;
+	}
+	
+	a.searchtab {
+		@include tab-style;
+  		@include rotate(0deg);
+		top: 17px;
+		right: 30px;
+		z-index:100;
+	}
+	a.sidetab {
+		display: none;
+	}
+	//sidebar - off-canvas 
+	aside {
+		display: none;
+	}
+	aside.oncanvas {
+		display: block;
+		position: absolute;
+		top: -5px;
+		right: 10px;
+		left: 0px;
+		z-index: 10;
+		width: 90%;
+		padding-right:5%;
+		margin-left: 0px;
+		background: $color-light;
+		@include opacity(1);
+	}
+	form {
+		label {
+			position: absolute;
+			top:-999em;
+			left:-999em;
+		}
+		input,
+		textarea {
+			width: 100%;
+		}
+		input[type="submit"] {
+			margin-left: 0;
+		}
+	}
+}
+
+
+
+
+@media screen and (max-width: 320px) {  //#responsivetest {background:orange;}	
+	ul#simple-nav {
+		margin-left: -5px;
+		li {
+			padding: 0 .05em .3em;
+		}
+	}
+
+}
+/* Off-canvas approach for smartphones*/

@@ -1,0 +1,310 @@
+// Main layout styles
+
+body {
+	background-color: $color-tertiary;
+	background-image: url(assets/home_bg-large2.jpg);
+	background-repeat: no-repeat;
+	background-position: right top;
+	background-attachment:fixed;
+	@include background-size(cover);
+}
+a.skip {
+	font-size: 1.2em;
+	position: absolute;
+	top: 0; 
+	left: -10.3em;
+	padding: $padding/2;
+	background: $content-bg-color;
+	@include opacity(0.85);	
+	@include border-radius(0 0 0 .5em);
+	&:focus {
+		border: solid 2px #000;
+	}
+}
+#wrap {
+    position: absolute;
+	bottom: 0;
+    top: 0;
+    width: 100%;
+    
+	#centre {
+		margin: 0 auto;
+		background-color: $centre-bg-color;
+		width: 54em;
+		padding: 0 1em 1em;
+		position: relative;
+	}
+}
+
+header {
+	position: relative;
+	#logo {	
+		/*position: absolute;*/
+		position:relative;
+		top:0;
+		z-index: 1;
+		margin-bottom: -7.5%
+	}
+	nav {
+		/*padding-top: 102px;%*/
+		position: relative;
+		z-index: 3;
+		margin-bottom:2px;
+	}
+}
+main {
+	position: relative;
+}
+/* main content area (not homepage) */
+.content-bg {
+	background: $content-bg-color;
+	@include opacity(0.85);	
+	@include border-radius(.5em);
+	padding: $padding;
+}
+
+#searchwrap form {
+	font-size: 1.2em;
+	background: $content-bg-color;
+	@include opacity(0.85);	
+	@include border-radius(0 0 .5em.5em);
+	width: 15em;
+	padding: $padding/2;
+	position: absolute;
+	top: 0; 
+	right: -17.5em;
+	clear: both;
+	overflow: hidden;
+
+	label {
+		position:absolute;
+		top:-9999em;
+		left: -9999em;
+	}
+	input[type="text"] {
+		float:left;
+		width: 85%;
+	}
+	input[type="submit"] {
+		background-color: $color-tertiary;
+		background-image: url(assets/arrow_white.png);
+		background-repeat: no-repeat;
+		background-position: 55% 50%;
+		width: 22px;
+		height: 22px;
+		text-indent: -999em;
+		margin: 0 0 0 5px;
+		padding: 0;
+		float: left;
+		&:hover {
+			@include opacity(0.85);	 
+		}
+	}
+}
+
+aside {
+	background: $content-bg-color;
+	@include opacity(0.85);	
+	@include border-radius(.5em);
+	width:18em;
+	padding:$padding/2;
+	position:absolute;	
+	top: 0px; 
+	right: -22em;
+}
+
+
+footer {
+	background: $color-dark;
+	color: #fff;
+	@include border-radius(.5em);
+	padding: $padding;
+	margin: 1em 0;
+	ul {
+		@include clearfix;		
+		list-style: none;
+		margin: 0 0 .5em;
+		padding: 0;
+	}
+	li {
+		font-size: 1.2em;
+		float: left;
+		margin-right: 2em;
+	}
+	a {
+		color: #fff;
+	}
+}
+
+/*----------------------
+  MAIN NAVIGATION
+------------------*/
+
+ul#mainnav,
+ul#simple-nav {
+	@include clearfix;
+	padding-left:0;
+	margin: 0 0 .1em;
+	li {
+		float: left;
+		list-style: none;
+		margin-right: .5em;
+		padding: 0 .2em .3em;
+		font-size: 4.7em;
+		font-family: $font-folk;
+		font-size-adjust: .5;
+		line-height: .7;
+		margin: 0 0 -.2em;
+		a {
+			color: $color-secondary;
+			text-decoration: none;
+			text-transform: lowercase;
+			&:hover,
+			&:focus{
+				color: $link-color-hover;
+			}
+		}
+	}
+	li.current-menu-item,
+	li.current_page_item,
+	li.current_page_parent,
+	li.current-page-ancestor { 
+		background:#fff;
+		position: relative;
+		@include opacity(0.85);
+		@include border-radius(.2em);
+		a {
+			color: $color-tertiary;
+			&:hover,
+			&:focus{
+				text-decoration:none;
+				cursor: default;
+			}
+		}
+	}
+}
+
+ul#simple-nav {
+	margin-bottom:.5em;
+}
+
+aside {
+	//side navigation
+	ul {
+		list-style: none;
+	    margin-left: 0;
+	    padding-left: 0;
+	}
+	ul.bullet {
+		list-style: outside disc;
+		padding-left:.5em;
+		margin-left:.5em;
+	}
+	ul#webdevnav {
+		li.current-menu-item {
+			@include h3-type;
+		}
+	}
+}
+
+
+/*----------------------
+  HOMEPAGE SPECIFIC
+-----------------------*/
+body.home #wrap {	
+	a.skip,
+	a.searchtab {
+		display: none;
+	}
+	#centre {
+		background-color: transparent;
+	}
+	ul#mainnav {
+		margin:2em 0;
+		li {
+			font-size: 9em;
+			float: none;
+			margin: 0 0 0.2em .3em;
+    		text-align: left;
+    		a {
+    			@include text-shadow(rgba(#fff, 0.7) 0px 0px 15px, rgba(#fff, 0.7) 0px 0px 15px, rgba(#fff, 0.7) 0px 0px 15px);
+    			&:hover,
+    			&:focus {
+    				@include text-shadow(rgba($color-light, 0.7) 0px 0px 15px, rgba($color-light, 0.7) 0px 0px 15px, rgba($color-light, 0.7) 0px 0px 15px);
+    			}
+    		}
+		}
+		li.current_page_item { 
+			background:none;
+			position: relative;
+			@include opacity(1);
+			@include border-radius(0);
+			a {
+				color: $color-dark;
+				@include text-shadow(rgba($color-light, 0.7) 0px 0px 15px, rgba($color-light, 0.7) 0px 0px 15px, rgba($color-light, 0.7) 0px 0px 15px);
+			}
+		}
+	}
+	#searchwrap form {
+		position: relative;
+		width: 50%;
+		right: auto;
+		left: 0;
+		@include border-radius(.5em.5em 0 0);
+	}
+	footer {
+		margin-top: 0;
+		@include border-radius(0 .5em .5em .5em);
+		background: #000;
+		@include opacity(0.75);
+	}
+}
+
+
+/*----------------------
+  WORDPRESS THEME _s 
+-----------------------*/
+
+.entry-meta {
+	background: none;
+	padding: 0;
+	font-size: .9em;
+	color: $color-primary;
+	a {
+		color: $color-primary;
+	}
+}
+.entry-content {
+	margin-top: 1em;
+}
+time.updated,
+span.byline {
+	display:none;
+}
+.post-navigation {
+	clear: both;
+	overflow: hidden;
+	h1 {
+		position: absolute;
+		top: -999em;
+		left: -999em;
+	}
+	.nav-previous {
+		float: left;
+	}
+	.nav-next {
+		float: right;
+	}
+}
+aside {
+	#tagcloud p {
+		
+		a {
+			vertical-align: middle;
+			text-decoration: none;
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+}

@@ -1,0 +1,56 @@
+@mixin clearfix {
+  zoom:1;
+  &:before, &:after {
+    content: "\0020"; 
+    display: block; 
+    height: 0; 
+    overflow: hidden; 
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+.clearfix, .group{
+  @include clearfix;
+}
+
+
+/*------------------
+  Suko443 mixins
+-------------------*/
+
+/* headers */
+@mixin h2-type {
+  font-family: $font-folk;
+  font-size: 3em;
+  margin: 0 0 0;
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+}
+@mixin h3-type {
+  font-family: $font-folk;
+  font-size: 2.5em;
+  margin: 0 0 0;
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+}
+@mixin h4-type {
+
+}
+@mixin h5-type {
+
+}
+@mixin tab-style {
+  display: block;
+  font-size: 1.2em;
+  font-weight: bold;
+  text-decoration: none;
+  position: absolute;
+  background: #fff;
+  padding: 5px 10px;
+  @include opacity(0.75); 
+  @include border-radius(.5em .5em 0  0);
+}

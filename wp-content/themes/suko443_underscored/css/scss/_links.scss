@@ -1,0 +1,13 @@
+// Text links
+a{
+	color: $link-color;
+	&:hover,&:focus{
+		color: $link-color-hover;
+		text-decoration: none;
+	}
+}
+
+a.toplink {
+	display: block;
+	padding: 10px 0;
+}
