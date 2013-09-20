@@ -5,9 +5,9 @@
  */
  ?>
 
-<!--*PAGE-CONTACT.PHP yes sir*-->
+<!--*PAGE-CONTACT.PHP*-->
 <?php 
-//If the form is submitted
+//If the form is submitted...
 if(isset($_POST['submitted'])) {
 	//Check to see if the honeypot captcha field was filled in
 	if(trim($_POST['checking']) !== '') {
@@ -79,15 +79,15 @@ if(isset($emailSent) && $emailSent == true) {
 	  <h1>Thanks, <?=$name;?></h1>
 	  <p>Your email was successfully sent. I will be in touch soon.</p>
 	</div>
-<?php } else { ?>
-<!-- show form if email not sent -->
-	<?php if (have_posts()) : ?>
+<?php } else { 
+	//show form if email not sent
+	if (have_posts()) : ?>
  
 		<?php while (have_posts()) : the_post(); ?>
 		
 		
 
-		
+		<!-- contact form -->
 
 		<form action="<?php the_permalink(); ?>" id="contactForm" method="post">
 			<?php the_content(); ?>

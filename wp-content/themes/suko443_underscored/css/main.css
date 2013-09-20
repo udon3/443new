@@ -775,7 +775,7 @@ a.skip:focus {
 }
 
 #wrap {
-  position: absolute;
+  position: relative;
   bottom: 0;
   top: 0;
   width: 100%;
@@ -783,7 +783,7 @@ a.skip:focus {
 #wrap #centre {
   margin: 0 auto;
   background-color: #708a6d;
-  width: 54em;
+  width: 540px;
   padding: 0 1em 1em;
   position: relative;
 }
@@ -832,11 +832,11 @@ main {
   -ms-border-radius: 0 0 0.5em 0.5em;
   -o-border-radius: 0 0 0.5em 0.5em;
   border-radius: 0 0 0.5em 0.5em;
-  width: 15em;
+  width: 180px;
   padding: 7px;
   position: absolute;
   top: 0;
-  right: -17.5em;
+  right: -208px;
   clear: both;
   overflow: hidden;
 }

@@ -22,7 +22,7 @@ a.skip {
 	}
 }
 #wrap {
-    position: absolute;
+    position: relative;
 	bottom: 0;
     top: 0;
     width: 100%;
@@ -30,7 +30,7 @@ a.skip {
 	#centre {
 		margin: 0 auto;
 		background-color: $centre-bg-color;
-		width: 54em;
+		width: 540px;
 		padding: 0 1em 1em;
 		position: relative;
 	}
@@ -68,11 +68,11 @@ main {
 	background: $content-bg-color;
 	@include opacity(0.85);	
 	@include border-radius(0 0 .5em.5em);
-	width: 15em;
+	width: 180px;
 	padding: $padding/2;
 	position: absolute;
 	top: 0; 
-	right: -17.5em;
+	right: -208px;
 	clear: both;
 	overflow: hidden;
 

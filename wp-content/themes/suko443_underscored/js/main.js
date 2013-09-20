@@ -25,56 +25,7 @@ SUKO443.Utils = function(){
 SUKO443.Modules = function(){
 
 
-	/*
-	 	Clear Form field on focus
-	 	remove/add default text ofform field on focus/blur
-	*/
-	var _clearFieldOnFocus = function(){		
-        $('input, textarea').each(function(){
-        	var $this = $(this);
-        	//only for text inputs
-        	if (($this.attr('type') !== 'submit')||($this.attr('type') !== 'button')){
-        		var defaultText = this.value;
-        		this.onfocus = function(){
-		            //clear field if default text
-		            if(this.value==defaultText){
-			            this.value = '';
-			        }
-        		};
-        		this.onblur = function(){
-		            //reinstate dafault text if field is empty
-		            if(this.value == ''){
-		            	this.value = defaultText;
-		            }  
-		        }
-        	}
-        });       
-	};
-
-	/*	Placeholder 
-		if form input placeholder is supported, remove value attibute value
-		if not, run the _clearFieldOnFocus() function 
-		(assumes the mark up contains both value and placeholder attributes)
-	*/
-	var placeholderFn = function(){
-		(function(){
-			//test to see if the current document supports the placeholder property
-			jQuery.support.placeholder = false;
-			test = document.createElement('input');
-			if('placeholder' in test){
-				jQuery.support.placeholder = true;
-			}
-		})();
-
-		//if placeholder not supported (this is a wip)
-		if(!$.support.placeholder){
-			
-			//function for removing default text on focus
-			_clearFieldOnFocus();
-		}
-	}();//immediate invocation
-
-
+	
 
 	/*	setLinkTarget
 	 	Open external links and chosen file types (e.g. PDFs) in a new window
@@ -174,34 +125,92 @@ SUKO443.Modules = function(){
 	.		paramname: selector/string/number/boolean/etc
 	.	e.g. functionName(param)
 	*/
-	//SOme new additional function
+	
+	/*****************************
+	 FORMS
+	 ****************************/
+	/*	Placeholder (IIFE)
+		if form input placeholder is not supported, add value attribute
+		(set marker to ensure the form validator can spot an 'unedited field'??)
+		and run the _clearFieldOnFocus() function 
+	*/
+	var placeholderFn = function(){
+		(function(){
+			//test to see if the current document supports the placeholder property
+			jQuery.support.placeholder = false;
+			test = document.createElement('input');
+			if('placeholder' in test){
+				jQuery.support.placeholder = true;
+			}
+		})();
+
+		//if placeholder not supported, add value attributes
+		if(!$.support.placeholder){
+			//for any input fields and textareas with placeholders
+			var $targetFields = $('input[placeholder], textarea[placeholder]');
+			//add placeholder text as value in each field
+			$targetFields.each(function(){
+				var $this = $(this);
+				var placeholderText = $(this).attr('placeholder');				
+				
+				$this.val(placeholderText)
+					 .focus(function() {
+						if($(this).val() == placeholderText){
+							$(this).val('');
+						}
+					 }).blur(function() {
+						if($(this).val() == ''){
+							$(this).val(placeholderText);
+						}
+					 });
+				
+			});
+
+		}
+	}();//immediate invocation
+
 
 	/*	contactFormSubmit:
-	.	Validates, shows errors, submits form and shows a message on success: 
+	.	Validates, shows error messages, submits form and shows a message on success: 
 	.
 	*/
 	var contactFormSubmit = function(){
+		
+
+		//bind methods to the submit event
 		$('form#contactForm').submit(function() {
 		  	//remove error messages if there are any
 		  	$('form#contactForm .error').remove();
 			//set boolean marker to denote errors in form
 			var hasError = false;
-			//required fields
+			//set marker for use with non-placeholder browsers
+			var hasDefaultValue = false;
+
+			//iterate through required fields
 			$('.requiredField').each(function() {
-				if(jQuery.trim($(this).val()) == '') {
-					var labelText = $(this).prev('label').text();
-					//error:
-					$(this).parent().append('<span class="error">You forgot to enter your '+labelText+'.</span>');
+				var $thisField = $(this);
+				//set up for non-placeholder browsers (using value attributes added by placeholderFn function):
+				if($thisField.val() == $thisField.attr('placeholder')){
+					hasDefaultValue = true;
+				}
+				//show error if field is empty or has the placeholder text
+				if(jQuery.trim($thisField.val()) == '' || hasDefaultValue) {
+					var labelText = $thisField.prev('label').text();
+					//append error message:
+					$thisField.parent().append('<span class="error">Please enter your '+labelText+'.</span>');
+					//turn on error marker
 					hasError = true;
-				} else if($(this).hasClass('email')) {
-					//additional test for email
+				} else if($thisField.hasClass('email')) {
+					//additional test for email address:
 					var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/; 
-					if(!emailReg.test(jQuery.trim($(this).val()))) {
-						var labelText = $(this).prev('label').text();
-						$(this).parent().append('<span class="error">You entered an invalid '+labelText+'.</span>');
+					if(!emailReg.test(jQuery.trim($thisField.val()))) {
+						var labelText = $thisField.prev('label').text();
+						$thisField.parent().append('<span class="error">You entered an invalid '+labelText+'.</span>');
 						hasError = true;
 					}
-				}
+				} 
+
+
 			}); //close requiredField .each iteration
 			if(!hasError) {
 				//on successful send...
@@ -217,6 +226,10 @@ SUKO443.Modules = function(){
 		});
 	};
 
+
+
+
+	
 
 
 
@@ -248,7 +261,6 @@ $(document).ready(function(){
 	SUKO443.Modules.setLinkTarget();
 
 	SUKO443.Modules.contactFormSubmit();
-
 
 
 
