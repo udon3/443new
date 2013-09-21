@@ -110,7 +110,7 @@ if(isset($emailSent) && $emailSent == true) {
 			</div>
 
 			<div>
-				<label for="commentsText">Comments</label>
+				<label for="commentsText">Message</label>
 				<textarea name="comments" id="commentsText" placeholder="Message" class="requiredField"><?php if(isset($_POST['comments'])) { 
 				if(function_exists('stripslashes')) { 
 				echo stripslashes($_POST['comments']); 
@@ -135,6 +135,7 @@ if(isset($emailSent) && $emailSent == true) {
 				<input type="hidden" name="submitted" id="submitted" value="true" />
 				<input type="submit" value="Send Email" />
 			</div>
+			<div id="loading-graphic"></div>
 		</form>
 		<a href="#top" class="toplink">Back to top</a>
 		<?php endwhile; ?>

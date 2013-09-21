@@ -173,16 +173,36 @@ SUKO443.Modules = function(){
 	
 	
 
-	/*	formFieldValidation:
-	.	validate each field on blur: 
-	.
+	/*	formValidationSubmit:
+	.	validate each field on blur and on submit: 
+	.	params: 
+	.		args: object list of options
+	.	
+	.	e.g. formValidationSubmit({errorClass: 'failed'})
 	*/
-	var formFieldValidation = function(){
+	var formValidationSubmit = function(args){
+		var _options = {
+			errorClass : 'error',
+			blankErrorMessage : 'Please enter your ',
+			emailErrorMessage : 'Please enter a valid email address',
+			requiredClass : '.requiredField',
+			formID : '#contactForm',
+			thankyouMessage : '<strong>Thank you.</strong> <br />Your email was successfully sent.',
+			slideUpHeight : 10 //height in px, to animate the form slide for the thankyou message
+		};
+		//update _options variable by assigning values from the args parameter
+		if(args){
+			for (var arg in args){
+				_options[arg] = args[arg];
+			}
+		}
+
 		var hasError = false;
-		$('.requiredField').blur(function(){
+		$(_options.requiredClass).blur(function(){
 			var $this = $(this);
 			var labelText = $this.prev('label').text();
-			var errorMessage = '<span class="error">Please enter your '+labelText+'.</span>';
+			var errorMessage = '<span class="'+_options.errorClass+'">'+_options.blankErrorMessage+' '+labelText+'</span>';
+
 			//set up for non-placeholder browsers (using value attributes added by placeholderFn function):
 			var hasDefaultValue = false;
 			if($this.val() == $this.attr('placeholder')){
@@ -199,7 +219,7 @@ SUKO443.Modules = function(){
 				
 			} else { //field is filled
 				//check for error message and remove if present
-				$this.parent().removeClass('invalid').find('span.error').remove();
+				$this.parent().removeClass('invalid').find('span.'+_options.errorClass).remove();
 				// but if the field is email, do additional check:
 				//check email is valid
 				if($this.hasClass('email')){
@@ -208,7 +228,7 @@ SUKO443.Modules = function(){
 					if(!emailReg.test(jQuery.trim($this.val()))) {
 						//failed - email invalid
 						$this.parent().addClass('invalid');
-						$this.parent().append('<span class="error">Please enter a valid email address</span>');
+						$this.parent().append('<span class="'+_options.errorClass+'">'+_options.emailErrorMessage+'</span>');
 						//set hasError marker to true
 						hasError = true;
 					} else {
@@ -220,18 +240,22 @@ SUKO443.Modules = function(){
 
 		});
 
-		$('form#contactForm').submit(function() {
+		$(_options.formID).submit(function() {
 			
+					
 			$('.requiredField').blur();
 
 			if(!hasError) {
+				$('#loading-graphic').show().activity();
 				//on successful send...
 				var formInput = $(this).serialize();
 				$.post($(this).attr('action'),formInput, function(data){
+					$('#loading-graphic').hide();
+					$('form#contactForm').before('<p class="thanks">'+_options.thankyouMessage+'</p>')
+										 .animate({height: '10px', opacity: 0}, 500, function(){
+										 	$('.thanks').addClass('visible');
+										 });
 					
-					$('form#contactForm').slideUp("fast", function() {       
-						$(this).before('<p class="thanks"><strong>Thank you.</strong> <br />Your email was successfully sent.</p>');
-					});
 	   			});
 			}
 			return false;
@@ -239,85 +263,15 @@ SUKO443.Modules = function(){
 
 	};
 
-	/*	contactFormSubmit:
-	.	Validate, shows error message, submit form and show a message on success: 
-	.
-	*/
 	
-
-	/*	contactFormSubmit:
-	.	Validates, shows error messages, submits form and shows a message on success: 
-	.
-	var contactFormSubmit = function(){
-
-		//set boolean marker to denote errors in form
-		var hasError = false;
-		//set marker for use with non-placeholder browsers
-		var hasDefaultValue = false;
-
-		
-
-		//bind methods to the submit event (every attempt to submit form will run this code)
-		$('form#contactForm').submit(function() {
-		  	//remove error messages to begin
-		  	$('form#contactForm .error').remove();
-			
-			
-			//iterate through required fields
-			$('.requiredField').each(function() {
-				var $thisField = $(this);
-				//set up for non-placeholder browsers (using value attributes added by placeholderFn function):
-				if($thisField.val() == $thisField.attr('placeholder')){
-					hasDefaultValue = true;
-				}
-				//errors:
-				//show error message if field is empty or has the placeholder text
-				if(jQuery.trim($thisField.val()) == '' || hasDefaultValue) {
-					var labelText = $thisField.prev('label').text();
-					//append error message:
-					$thisField.parent().append('<span class="error">Please enter your '+labelText+'.</span>');
-					$thisField.addClass('invalid');
-					//turn on error marker
-					hasError = true;
-				} else if($thisField.hasClass('email')) {
-					//additional test for email address:
-					var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/; 
-					if(!emailReg.test(jQuery.trim($thisField.val()))) {
-						var labelText = $thisField.prev('label').text();
-						$thisField.parent().append('<span class="error">You entered an invalid '+labelText+'.</span>');
-						$thisField.addClass('invalid');
-						hasError = true;
-					}
-				} 
-
-
-			}); //close requiredField .each iteration
-
-			if(!hasError) {
-				//on successful send...
-				var formInput = $(this).serialize();
-				$.post($(this).attr('action'),formInput, function(data){
-					
-					$('form#contactForm').slideUp("fast", function() {       
-						$(this).before('<p class="thanks"><strong>Thank you.</strong> <br />Your email was successfully sent.</p>');
-					});
-	   			});
-			}
-			return false;
-		});
-	};
-
-
-	*/
 
 
 
 	//RETURN PUBLIC: public methods and properties
 	var modulesPublic = {
 		offcanvasToggle: offcanvasToggle,
-		//contactFormSubmit: contactFormSubmit,
 		setLinkTarget: setLinkTarget,
-		formFieldValidation: formFieldValidation
+		formValidationSubmit: formValidationSubmit
 		//functionName: functionName
 	};
 	return modulesPublic; 
@@ -338,8 +292,7 @@ $(document).ready(function(){
 	SUKO443.Modules.offcanvasToggle('.aside-button', 'aside');
 	SUKO443.Modules.setLinkTarget();
 
-	SUKO443.Modules.formFieldValidation();
-	//SUKO443.Modules.contactFormSubmit();
+	SUKO443.Modules.formValidationSubmit();
 	
 
 

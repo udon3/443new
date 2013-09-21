@@ -707,6 +707,25 @@ p.thanks {
   padding-top: 2em;
 }
 
+p.thanks {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+}
+
+p.thanks.visible {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+}
+
+#loading-graphic {
+  display: none;
+  width: 500px;
+  height: 300px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 .aligncenter {
   text-align: center;
 }
