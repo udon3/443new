@@ -36,6 +36,6 @@
 	<script>window.jQuery || document.write('<script src="js/jquery-1.10.1.min.js"><\/script>')</script>
 
 	<?php wp_footer(); ?>
-
+	</div>
 </body>
 </html>
