@@ -1042,12 +1042,7 @@ aside ul.bullet {
   margin-left: .5em;
 }
 aside ul#webdevnav li.current-menu-item {
-  font-family: "Folksolid", Arial, "Lucida Grande", sans-serif;
-  font-size: 2.5em;
-  margin: 0 0 0;
-  font-weight: normal;
-  font-style: normal;
-  line-height: 1;
+  font-weight: 700;
 }
 
 /*----------------------
