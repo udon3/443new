@@ -13,7 +13,7 @@
 
 			<?php if (is_page('about')){ 
 				get_template_part('inc/aside-about') ; 
-			} else if ( is_page('webdev')|| is_single()||is_category()){
+			} else if ( is_page('webdev')||is_page('devnotes')|| is_single()||is_category()){
 				get_template_part('inc/aside-webdev') ; 
 			}    
 			if($post->ancestors){

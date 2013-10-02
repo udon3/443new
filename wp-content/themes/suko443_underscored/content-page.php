@@ -18,6 +18,21 @@
 	?>
 	<div class="entry-content">
 		<?php the_content(); ?>
+
+		<?php if(is_page(devnotes)){ ?>
+			<!-- WEBDEV LANDING PAGE -->
+			<?php $my_query = "showposts=3"; $my_query = new WP_Query($my_query); ?>
+			<?php if ($my_query->have_posts()) : while ($my_query->have_posts()) : $my_query->the_post(); ?>
+				<?php
+					get_template_part( 'content', get_post_format() );
+
+				?>
+			<?php endwhile; // end of one post ?>
+			<?php endif; //end of loop ?>
+
+
+
+		<?php } ?>
 		<?php
 			wp_link_pages( array(
 				'before' => '<div class="page-links">' . __( 'Pages:', 'suko443_underscored' ),

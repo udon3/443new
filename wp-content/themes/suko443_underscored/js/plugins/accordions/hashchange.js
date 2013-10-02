@@ -88,10 +88,6 @@ var is_old_ie = (function(){
     str_hashchange = 'hashchange',
     str_href = 'href',
     
-    // IE6/7 specifically need some special love when it comes to back-button
-    // support, so let's do a little browser sniffing..
-    browser = $.browser,
-    mode = document.documentMode,
     
     // Does the browser support window.onhashchange? Test for IE version, since
     // IE8 incorrectly reports this when in "IE7" or "IE8 Compatibility View"!

@@ -7,6 +7,9 @@ Template Name: accordions-fragment*/
 	<!--*/INC_WEBDEV_DEMOS/ACCORDIONS.PHP*-->
 
 <!-- (page slug: jquery-accordions)-->
+			
+
+		
 			<!--<h2 class="h3-type">Notes on keyboard accessibility</h2>
 As default, tabbing will only allow you to focus on the first accordion item.
 
@@ -14,30 +17,30 @@ As default, tabbing will only allow you to focus on the first accordion item.
 <pre><code>$(".ui-accordion-header").attr("tabindex","");</code></pre>
 Resource (+ more info): <a href="http://lab.dotjay.co.uk/tests/jquery-ui-accordion-keyboard-accessibility/">http://lab.dotjay.co.uk/tests/jquery-ui-accordion-keyboard-accessibility/</a>-->
 			
-			<h2 class="h3-type">Example 1: navigable + no auto height</h2>
+			<h2 class="h3-type">Example 1: </h2>
 			
-			<p><code>navigation:true</code> enables an external link to target and open a specific segment of the accordion. BUT it wont work for same page links.</p>
-			<p>For same page links, use the autoOpenSegment function with the hashchange plugin. (still a few issues encountered with IE though)</p>
+			<p><strike><code>navigation:true</code> enables an external link to target and open a specific segment of the accordion. BUT it wont work for same page links.</strike> The <code>navigation</code> option has been deprecated along with many others.</p>
+			<p>The <code>navigation</code> option has been deprecated in v1.9 along with many others. (See <a href="http://jqueryui.com/upgrade-guide/1.9/">http://jqueryui.com/upgrade-guide/1.9/</a></p>
+			<p>For same page links, use the autoOpenSegment function with the hashchange plugin. (It's a bit buggy in IE7 - the focus goes to the right element, but the panel doesn't open until you hit enter.)</p>
 
 
-			<div id="accordion1" class="accordion">
-				<h3><a href="#section1">accordion header 1</a></h3>
-				<div>
+			<div id="accordion1" class="accordion" role="tablist">
+				<h3 role="tab">navigable + no auto height</h3>
+				<div role="tabpanel">
 					<pre>
 $('#accordion1').accordion({
 	header:'h3',
-	heightStyle: 'content',
-	navigation:true //enables finding anchors to open, but doesn't work with samepage links. 
+	heightStyle: 'content'
 });
 					</pre>
 				</div>
-				<h3><a href="#section2">accordion header 2</a></h3>
-				<div>
+				<h3 role="tab">accordion header 2</h3>
+				<div role="tabpanel">
 					accordion segment content 2.
 					Sed placerat adipiscing ornare. Duis tristique tincidunt dolor, a tempus turpis lobortis et. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec aliquet, nibh dapibus lobortis porta, diam felis ullamcorper enim, nec eleifend ligula risus quis eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut nec commodo eros. Vivamus ut porta metus. Duis ligula orci, laoreet viverra ullamcorper at, condimentum ut ipsum. Nunc quis orci in ipsum pretium pulvinar. 
 				</div>
-				<h3><a href="#section3">accordion header 3</a></h3>
-				<div>
+				<h3 role="tab">accordion header 3</h3>
+				<div role="tabpanel">
 					accordion segment content 3.
 					Quisque vitae enim eu mauris suscipit porttitor ut ut libero. Curabitur sit amet libero at massa feugiat scelerisque. 
 				</div>
@@ -45,11 +48,11 @@ $('#accordion1').accordion({
 
 
 
-			<h2 class="h3-type">Example 2: collapsible + togglable accordion</h2>
-
-			<div id="accordion2" class="accordion">
-				<h3><a href="#section1">accordion header 1</a></h3>
-				<div>
+			<h2 class="h3-type">Example 2: </h2>
+			<p>Actually, this could be done simply without the use of the UI plugin</p>
+			<div id="accordion2" class="accordion" role="tablist">
+				<h3 role="tab"><a href="#section1">collapsible + togglable accordion</a></h3>
+				<div role="tabpanel">
 					<pre>
 $('#accordion2').accordion({
 	collapsible:true,
@@ -57,13 +60,13 @@ $('#accordion2').accordion({
 });
 					</pre>
 				</div>
-				<h3><a href="#section2">accordion header 2</a></h3>
-				<div>
+				<h3 role="tab"><a href="#section2">accordion header 2</a></h3>
+				<div role="tabpanel">
 					accordion segment content 2.
 					Sed placerat adipiscing ornare. Duis tristique tincidunt dolor, a tempus turpis lobortis et. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec aliquet, nibh dapibus lobortis porta, diam felis ullamcorper enim, nec eleifend ligula risus quis eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut nec commodo eros. Vivamus ut porta metus. Duis ligula orci, laoreet viverra ullamcorper at, condimentum ut ipsum. Nunc quis orci in ipsum pretium pulvinar. 
 				</div>
-				<h3><a href="#section3">accordion header 3</a></h3>
-				<div>
+				<h3 role="tab"><a href="#section3">accordion header 3</a></h3>
+				<div role="tabpanel">
 					accordion segment content 3.
 					Quisque vitae enim eu mauris suscipit porttitor ut ut libero. Curabitur sit amet libero at massa feugiat scelerisque. 
 				</div>
@@ -71,11 +74,11 @@ $('#accordion2').accordion({
 
 
 
-			<h2 class="h3-type">Example 3: with additional scroll script</h2>
+			<h2 class="h3-type">Example 3: </h2>
 			<p>When very long accordions are opened, the content sometimes opens with the top out of view of the viewport, neccessitating the user to scroll up. This script makes use of the <code>change</code> event to scroll the opened content to top. </p>
-			<div id="accordion3" class="accordion">
-				<h3 id="one"><a href="#one">accordion header 1</a></h3>
-				<div>
+			<div id="accordion3" class="accordion" role="tablist">
+				<h3 id="one" role="tab">with additional scroll script</h3>
+				<div role="tabpanel">
 					<pre>
 $('#accordion3').accordion({
 	heightStyle: 'content',
@@ -94,13 +97,13 @@ $('#accordion3').accordion({
 					</pre>
 					<p>accordion activate adds event that fires after panel is activated. see the <a href="http://api.jqueryui.com/accordion/#event-activate">official documentation on jQuery UI accordion</a></p>
 				</div>
-				<h3 id="two"><a href="#two">accordion tooooooooo</a></h3>
-				<div>
+				<h3 id="two" role="tab"><a href="#two">accordion tooooooooo</a></h3>
+				<div role="tabpanel">
 					accordion segment content 2.
 					Sed placerat adipiscing ornare. Duis tristique tincidunt dolor, a tempus turpis lobortis et. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec aliquet, nibh dapibus lobortis porta, diam felis ullamcorper enim, nec eleifend ligula risus quis eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut nec commodo eros. Vivamus ut porta metus. Duis ligula orci, laoreet viverra ullamcorper at, condimentum ut ipsum. Nunc quis orci in ipsum pretium pulvinar. Sed placerat adipiscing ornare. Duis tristique tincidunt dolor, a tempus turpis lobortis et. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec aliquet, nibh dapibus lobortis porta, diam felis ullamcorper enim, nec eleifend ligula risus quis eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut nec commodo eros. Vivamus ut porta metus. Duis ligula orci, laoreet viverra ullamcorper at, condimentum ut ipsum. Nunc quis orci in ipsum pretium pulvinar.
 				</div>
-				<h3 id="three"><a href="#three">accordion header threeeeeee</a></h3>
-				<div>
+				<h3 id="three" role="tab"><a href="#three">accordion header threeeeeee</a></h3>
+				<div role="tabpanel">
 					accordion segment content 3.
 					Quisque vitae enim eu mauris suscipit porttitor ut ut libero. Curabitur sit amet libero at massa feugiat scelerisque. Sed placerat adipiscing ornare. Duis tristique tincidunt dolor, a tempus turpis lobortis et. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec aliquet, nibh dapibus lobortis porta, diam felis ullamcorper enim, nec eleifend ligula risus quis eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut nec commodo eros. Vivamus ut porta metus. Duis ligula orci, laoreet viverra ullamcorper at, condimentum ut ipsum. Nunc quis orci in ipsum pretium pulvinar. Sed placerat adipiscing ornare. Duis tristique tincidunt dolor, a tempus turpis lobortis et. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec aliquet, nibh dapibus lobortis porta, diam felis ullamcorper enim, nec eleifend ligula risus quis eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut nec commodo eros. Vivamus ut porta metus. Duis ligula orci, laoreet viverra ullamcorper at, condimentum ut ipsum. Nunc quis orci in ipsum pretium pulvinar.
 				</div>

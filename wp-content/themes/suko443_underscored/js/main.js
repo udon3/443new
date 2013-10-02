@@ -302,12 +302,12 @@ $(document).ready(function(){
 
 
 //WEBDEV DEMOS......................................
-//demo functions for the webdev section
+//functions purely for demo purposes, in the webdev section
 SUKO443.Demos = function(){
-
+	
 	/*	ACCORDIONS DEMO:
-	.	wrapper function for jquery UI accordion plugin 
-	.	dependencies: jQuery
+	.	wrapper function for jQuery UI Accordion plugin 
+	.	dependencies: jQuery, jQuery UI
 	*/
 	var initAccordions = function(){
 		//#1 accordion with autoheight set to false
@@ -342,10 +342,10 @@ SUKO443.Demos = function(){
 	
 	
 			
-	//make autoOpenSeg function work for same page links
-	 $(window).bind('hashchange', autoOpenSeg);
-		
-	 // checks URL for # and opens accordion if it exists
+		//make autoOpenSeg function work for same page links
+		$(window).bind('hashchange', autoOpenSeg);
+			
+		 // checks URL for # and opens accordion if it exists
 		function autoOpenSeg (){
 			var url = new String(document.location)//turn location URL into a string
 			var hash = (url.indexOf('#')); //search for '#' in this string and store its number in a variable
@@ -355,6 +355,8 @@ SUKO443.Demos = function(){
 			}
 		}
 		autoOpenSeg ();
+
+
 	}; 
 
 

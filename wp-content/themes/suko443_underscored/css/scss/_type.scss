@@ -17,7 +17,9 @@
   font-weight: normal;
   font-style: normal;
 }
-
+/* Google fonts in use:
+font-family: 'Roboto Slab', serif;
+*/
 
 /*---------------------
   TYPOGRAPHICAL STYLES 
@@ -50,30 +52,39 @@ blockquote {
 }
 
 
-h1 {
-  font-family: $font-folk;
-  font-size: 4em;
+.post .page h1,
+h1.page-title {
+  font-family: $font-header;
+  font-size: 2.5em;
   margin: 0 0 25px;
-  font-weight: normal;
+  font-weight: 600;
   font-style: normal;
   line-height: 1;
 }
-h1.entry-title {
+.post .post h1,
+.entry-title {
   @include h2-type; 
+  margin-bottom: .5em;
 }
 
 //worth putting header font sizes into the config?
 h2 {
   @include h2-type; 
+  margin-bottom: .5em;
+}
+p + h2,
+p + h4 {
+  margin-top: 1em;
 }
 
 h3 {
   @include h3-type; 
+  margin-bottom: .5em;
 }
 
 h4 {
   font-size: 18px;
-  margin: 0 0 25px;
+  margin: 0;
   font-weight: 600;
   font-style: normal;
   line-height: 1;
@@ -113,6 +124,10 @@ section ul {
 }
 section ol {
   padding-left: 1.5em;
+}
+
+section h4 + ul {
+  margin-top: .5em;
 }
 
 /* aside */

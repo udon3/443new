@@ -481,6 +481,9 @@ table {
   font-style: normal;
 }
 
+/* Google fonts in use:
+font-family: 'Roboto Slab', serif;
+*/
 /*---------------------
   TYPOGRAPHICAL STYLES 
 ----------------------*/
@@ -512,45 +515,55 @@ blockquote {
   border-left: 2px solid #333333;
 }
 
-h1 {
-  font-family: "Folksolid", Arial, "Lucida Grande", sans-serif;
-  font-size: 4em;
+.post .page h1,
+h1.page-title {
+  font-family: "Roboto Slab", serif;
+  font-size: 2.5em;
   margin: 0 0 25px;
-  font-weight: normal;
+  font-weight: 600;
   font-style: normal;
   line-height: 1;
 }
 
-h1.entry-title {
-  font-family: "Folksolid", Arial, "Lucida Grande", sans-serif;
-  font-size: 3em;
+.post .post h1,
+.entry-title {
+  font-family: "Roboto Slab", serif;
+  font-size: 1.8em;
   margin: 0 0 0;
   font-weight: normal;
   font-style: normal;
   line-height: 1;
+  margin-bottom: .5em;
 }
 
 h2 {
-  font-family: "Folksolid", Arial, "Lucida Grande", sans-serif;
-  font-size: 3em;
+  font-family: "Roboto Slab", serif;
+  font-size: 1.8em;
   margin: 0 0 0;
   font-weight: normal;
   font-style: normal;
   line-height: 1;
+  margin-bottom: .5em;
+}
+
+p + h2,
+p + h4 {
+  margin-top: 1em;
 }
 
 h3 {
-  font-family: "Folksolid", Arial, "Lucida Grande", sans-serif;
-  font-size: 2.5em;
+  font-family: "Roboto Slab", serif;
+  font-size: 1.4em;
   margin: 0 0 0;
   font-weight: normal;
   font-style: normal;
   line-height: 1;
+  margin-bottom: .5em;
 }
 
 h4 {
   font-size: 18px;
-  margin: 0 0 25px;
+  margin: 0;
   font-weight: 600;
   font-style: normal;
   line-height: 1;
@@ -593,6 +606,10 @@ section ul {
 
 section ol {
   padding-left: 1.5em;
+}
+
+section h4 + ul {
+  margin-top: .5em;
 }
 
 /* aside */
@@ -1381,8 +1398,8 @@ a.searchtab {
   }
 
   h1 {
-    font-family: "Folksolid", Arial, "Lucida Grande", sans-serif;
-    font-size: 3em;
+    font-family: "Roboto Slab", serif;
+    font-size: 1.8em;
     margin: 0 0 0;
     font-weight: normal;
     font-style: normal;
@@ -1390,8 +1407,8 @@ a.searchtab {
   }
 
   h2 {
-    font-family: "Folksolid", Arial, "Lucida Grande", sans-serif;
-    font-size: 2.5em;
+    font-family: "Roboto Slab", serif;
+    font-size: 1.4em;
     margin: 0 0 0;
     font-weight: normal;
     font-style: normal;

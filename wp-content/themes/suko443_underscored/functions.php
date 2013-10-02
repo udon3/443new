@@ -111,9 +111,10 @@ function suko443_underscored_scripts() {
 add_action( 'wp_enqueue_scripts', 'suko443_underscored_scripts' );
 
 function suko443_underscored_demos() {
+	
 	if ( is_page(jquery-accordion ) ){
 		//include accordion plugin
-		wp_enqueue_script('jqueryAccordion', get_template_directory_uri() . '/js/plugins/accordions/jquery-ui-1.10.3.custom.min.js', array('jquery'), '1.8.2', true);
+		wp_enqueue_script('jqueryAccordion', get_template_directory_uri() . '/js/plugins/accordions/jquery-ui-1.10.3.custom.min.js', array('jquery'), '1.10.3', true);
 		wp_enqueue_script('hashChange', get_template_directory_uri() . '/js/plugins/accordions/hashchange.js', array('jquery'), '', true);
 		wp_enqueue_style('accordionsStyle', get_template_directory_uri() . '/js/plugins/accordions/accordions.css');
 	}
