@@ -51,7 +51,7 @@ $('#accordion1').accordion({
 			<h2 class="h3-type">Example 2: </h2>
 			<p>Actually, this could be done simply without the use of the UI plugin</p>
 			<div id="accordion2" class="accordion" role="tablist">
-				<h3 role="tab"><a href="#section1">collapsible + togglable accordion</a></h3>
+				<h3 role="tab">collapsible + togglable accordion</h3>
 				<div role="tabpanel">
 					<pre>
 $('#accordion2').accordion({
@@ -60,12 +60,12 @@ $('#accordion2').accordion({
 });
 					</pre>
 				</div>
-				<h3 role="tab"><a href="#section2">accordion header 2</a></h3>
+				<h3 role="tab">accordion header 2</h3>
 				<div role="tabpanel">
 					accordion segment content 2.
 					Sed placerat adipiscing ornare. Duis tristique tincidunt dolor, a tempus turpis lobortis et. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec aliquet, nibh dapibus lobortis porta, diam felis ullamcorper enim, nec eleifend ligula risus quis eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut nec commodo eros. Vivamus ut porta metus. Duis ligula orci, laoreet viverra ullamcorper at, condimentum ut ipsum. Nunc quis orci in ipsum pretium pulvinar. 
 				</div>
-				<h3 role="tab"><a href="#section3">accordion header 3</a></h3>
+				<h3 role="tab">accordion header 3</h3>
 				<div role="tabpanel">
 					accordion segment content 3.
 					Quisque vitae enim eu mauris suscipit porttitor ut ut libero. Curabitur sit amet libero at massa feugiat scelerisque. 
@@ -88,8 +88,8 @@ $('#accordion3').accordion({
 		//but only if the acordion's opening
 		if (ui.newHeader.length > 0)
 		{
-			var x = ui.newHeader.offset().top - 100; // 100 provides buffer in viewport
-			$('html,body').animate({ scrollTop: x }, 500);
+			var y = ui.newHeader.offset().top - 100; // 100 provides buffer in viewport
+			$('html,body').animate({ scrollTop: y }, 500);
 		}
     }
 });
@@ -97,12 +97,12 @@ $('#accordion3').accordion({
 					</pre>
 					<p>accordion activate adds event that fires after panel is activated. see the <a href="http://api.jqueryui.com/accordion/#event-activate">official documentation on jQuery UI accordion</a></p>
 				</div>
-				<h3 id="two" role="tab"><a href="#two">accordion tooooooooo</a></h3>
+				<h3 id="two" role="tab">accordion tooooooooo</h3>
 				<div role="tabpanel">
 					accordion segment content 2.
 					Sed placerat adipiscing ornare. Duis tristique tincidunt dolor, a tempus turpis lobortis et. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec aliquet, nibh dapibus lobortis porta, diam felis ullamcorper enim, nec eleifend ligula risus quis eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut nec commodo eros. Vivamus ut porta metus. Duis ligula orci, laoreet viverra ullamcorper at, condimentum ut ipsum. Nunc quis orci in ipsum pretium pulvinar. Sed placerat adipiscing ornare. Duis tristique tincidunt dolor, a tempus turpis lobortis et. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec aliquet, nibh dapibus lobortis porta, diam felis ullamcorper enim, nec eleifend ligula risus quis eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut nec commodo eros. Vivamus ut porta metus. Duis ligula orci, laoreet viverra ullamcorper at, condimentum ut ipsum. Nunc quis orci in ipsum pretium pulvinar.
 				</div>
-				<h3 id="three" role="tab"><a href="#three">accordion header threeeeeee</a></h3>
+				<h3 id="three" role="tab">accordion header threeeeeee</h3>
 				<div role="tabpanel">
 					accordion segment content 3.
 					Quisque vitae enim eu mauris suscipit porttitor ut ut libero. Curabitur sit amet libero at massa feugiat scelerisque. Sed placerat adipiscing ornare. Duis tristique tincidunt dolor, a tempus turpis lobortis et. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec aliquet, nibh dapibus lobortis porta, diam felis ullamcorper enim, nec eleifend ligula risus quis eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut nec commodo eros. Vivamus ut porta metus. Duis ligula orci, laoreet viverra ullamcorper at, condimentum ut ipsum. Nunc quis orci in ipsum pretium pulvinar. Sed placerat adipiscing ornare. Duis tristique tincidunt dolor, a tempus turpis lobortis et. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec aliquet, nibh dapibus lobortis porta, diam felis ullamcorper enim, nec eleifend ligula risus quis eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut nec commodo eros. Vivamus ut porta metus. Duis ligula orci, laoreet viverra ullamcorper at, condimentum ut ipsum. Nunc quis orci in ipsum pretium pulvinar.
