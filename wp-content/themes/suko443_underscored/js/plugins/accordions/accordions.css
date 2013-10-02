@@ -1,0 +1,32 @@
+/*accordions demo */
+.h3-type {
+	font-size: 2.5em;
+}
+.accordion h3 {
+	font-family: "Roboto",Arial,"Lucida Grande",sans-serif;
+	font-size: 1em;
+	font-weight: 700;
+}
+/*#1 accordion with autoheight set to false*/
+#accordion1 {width:500px;}
+#accordion1 h3 {background:orange; padding:5px; margin:0 0 1px 0;}
+#accordion1 h3.ui-state-hover, #accordion1 h3.ui-state-focus {background:yellow;}
+#accordion1 h3.ui-state-active {background:green;}
+#accordion1 h3 a {display:block; text-decoration:none; color:#fff;}
+#accordion1 div {border:1px solid orange; padding:5px;}
+
+/*#2 closed and toggleable accordion*/
+#accordion2 {width:500px;}
+#accordion2 h3 {background:blue; padding:5px; margin:0 0 1px 0;}
+#accordion2 h3.ui-state-hover, #accordion2 h3.ui-state-focus {background:purple;}
+#accordion2 h3.ui-state-active {background:red;}
+#accordion2 h3 a {display:block; text-decoration:none; color:#fff;}
+#accordion2 div {border:1px solid blue; padding:5px;}
+
+/*#3 accordion with additional scroll script to reposition opened section within the window.*/
+#accordion3 {width:500px;}
+#accordion3 h3 {background:blue; padding:5px; margin:0 0 1px 0;}
+#accordion3 h3.ui-state-hover, #accordion3 h3.ui-state-focus {background:purple;}
+#accordion3 h3.ui-state-active {background:red;}
+#accordion3 h3 a {display:block; text-decoration:none; color:#fff;}
+#accordion3 div {border:1px solid blue; padding:5px;}

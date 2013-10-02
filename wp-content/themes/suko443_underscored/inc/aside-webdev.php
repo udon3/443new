@@ -19,6 +19,17 @@ Template Name: aside-webdev-fragment*/
 	 ?>
 	</nav>
 	<nav role="navigation">
+		<h3>Recent posts</h3>
+		<ul>
+		<?php
+			$recent_posts = wp_get_recent_posts('numberposts=5');
+			foreach( $recent_posts as $recent ){
+				echo '<li><a href="' . get_permalink($recent["ID"]) . '" title="Look '.esc_attr($recent["post_title"]).'" >' .   $recent["post_title"].'</a> </li> ';
+			}
+		 ?>
+		</ul>
+	</nav>
+	<nav role="navigation">
 		<h3>Dev notes categories</h3>
 		<ul>
 			<?php wp_list_categories('show_count=1&title_li='); ?>

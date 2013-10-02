@@ -19,7 +19,8 @@ SUKO443.Utils = function(){
 	};
 	return utilsPublic; 
 
-}();
+}();//end SUKO443.Utils namespace................................
+
 
 //GENERAL MODULES WITHIN SUKO443.................................
 SUKO443.Modules = function(){
@@ -276,11 +277,7 @@ SUKO443.Modules = function(){
 	};
 	return modulesPublic; 
 
-}();
-
-
-	
-
+}();//end SUKO443.modules namespace..............
 
 
 	
@@ -297,15 +294,103 @@ $(document).ready(function(){
 
 
 
+});//JQUERY DOM READY...............................
+
+
+
+
+
+
+//WEBDEV DEMOS......................................
+//functions purely for demo purposes, in the webdev section
+SUKO443.Demos = function(){
+	
+	/*	ACCORDIONS DEMO:
+	.	wrapper function for jQuery UI Accordion plugin 
+	.	dependencies: jQuery, jQuery UI
+	*/
+	var initAccordions = function(){
+		//#1 accordion with autoheight set to false
+		$('#accordion1').accordion({
+			header:'h3',
+			heightStyle: 'content',
+			navigation:true //enables finding anchors to open, but doesn't work with samepage links. 
+		});
+		
+		//#2 collapsible + togglable accordion
+		$('#accordion2').accordion({
+			collapsible:true,
+			active:false
+		});
+		
+		
+		//#3 scroll open section in window
+		$('#accordion3').accordion({
+			heightStyle: 'content',
+			// accordion activate adds event that fires after panel is activated. see http://api.jqueryui.com/accordion/#event-activate
+            activate: function(event, ui) {				
+				console.log('hi');
+				//but only if the acordion's opening
+				if (ui.newHeader.length > 0)
+				{
+					var x = ui.newHeader.offset().top - 100; // 100 provides buffer in viewport
+					$('html,body').animate({ scrollTop: x }, 500);
+				}
+            }
+		});
+		
+	
+	
+			
+		//make autoOpenSeg function work for same page links
+		$(window).bind('hashchange', autoOpenSeg);
+			
+		 // checks URL for # and opens accordion if it exists
+		function autoOpenSeg (){
+			var url = new String(document.location)//turn location URL into a string
+			var hash = (url.indexOf('#')); //search for '#' in this string and store its number in a variable
+			if (hash > 0 && hash+1 != url.length){ //if there is a '#' and a string behind it, do the following:
+				var href = (url.slice(hash,url.length)); //slice the hash part of the url and store it in 'href'
+				$(href).click();//trigger the click event on it 
+			}
+		}
+		autoOpenSeg ();
+
+
+	}; 
+
+
+
+
+
+
+
+
+
+
+
+	//RETURN PUBLIC: public methods and properties
+	var demosPublic = {
+		initAccordions: initAccordions
+		//functionName: functionName
+	};
+	return demosPublic; 
+
+
+
+
+
+
+}();//end SUKO443.demos namespace
+
+
+//JQUERY DOM READY (for webdev demos)................................
+
+$(document).ready(function(){
+	
+	SUKO443.Demos.initAccordions();
 	
 
-	
 
 
-
-
-
-
-
-
-});//close document ready
+});//end JQUERY DOM READY (for webdev demos)...............................
