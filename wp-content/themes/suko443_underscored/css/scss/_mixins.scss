@@ -22,16 +22,16 @@
 
 /* headers */
 @mixin h2-type {
-  font-family: $font-folk;
-  font-size: 3em;
+  font-family: $font-header;
+  font-size: 1.8em;
   margin: 0 0 0;
   font-weight: normal;
   font-style: normal;
   line-height: 1;
 }
 @mixin h3-type {
-  font-family: $font-folk;
-  font-size: 2.5em;
+  font-family: $font-header;
+  font-size: 1.4em;
   margin: 0 0 0;
   font-weight: normal;
   font-style: normal;
