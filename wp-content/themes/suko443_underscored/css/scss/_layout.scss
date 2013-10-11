@@ -212,15 +212,37 @@ aside {
   HOMEPAGE SPECIFIC
 -----------------------*/
 body.home #wrap {	
+	position: absolute;
 	a.skip,
 	a.searchtab {
 		display: none;
 	}
 	#centre {
 		background-color: transparent;
+		height: 100%;
 	}
-	ul#mainnav {
-		margin:2em 0;
+	header {
+		height: 80%;
+
+			
+		nav {
+			margin:2em 0;
+			height:80%;
+			display: table;
+			width:100%;
+		}
+	}
+	#searchwrap, footer {
+		position: relative;
+		z-index: 4;
+	}
+
+	ul#mainnav {	
+		height:100%;
+		display: table-cell;
+		vertical-align: middle;
+		text-align: center;
+		width:300px;
 		li {
 			font-size: 9em;
 			float: none;
